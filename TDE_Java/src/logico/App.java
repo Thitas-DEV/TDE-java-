@@ -18,16 +18,16 @@ public class App {
 
 			int b;
 			while ((b = is.read()) != -1) {
-				System.out.print((char) b); // converte byte para char e imprime
+				System.out.print((char) b); 
 			}
 
-			is.close(); // fecha o arquivo
+			is.close(); 
 		}
 	}
 
 	public static void main(String[] args) {
 		carregarPlaylistsDeArquivos();
-		carregarMusicasDeArquivo(); // antes do menu()
+		carregarMusicasDeArquivo(); 
 
 		menu();
 	}
@@ -261,7 +261,7 @@ public class App {
 			System.out.println("[6] - Voltar ao menu anterior");
 
 			escolha = entrada.nextInt();
-			entrada.nextLine(); // Consumir a quebra de linha
+			entrada.nextLine(); 
 
 			switch (escolha) {
 				case 1:
@@ -274,7 +274,7 @@ public class App {
 
 					if (musicaAdd != null) {
 						playlist.addMusica(musicaAdd);
-						salvarPlaylistEmArquivo(playlist); // SALVA AUTOMATICAMENTE
+						salvarPlaylistEmArquivo(playlist); 
 						System.out.println("Música adicionada com sucesso!");
 					} else {
 						System.out.println("Essa música não está cadastrada no sistema.");
@@ -288,7 +288,7 @@ public class App {
 
 					if (musicaRem != null) {
 						playlist.removerMusica(musicaRem);
-						salvarPlaylistEmArquivo(playlist); // SALVA AUTOMATICAMENTE
+						salvarPlaylistEmArquivo(playlist); 
 						System.out.println("Música removida com sucesso!");
 					} else {
 						System.out.println("Essa música não está cadastrada no sistema.");
@@ -299,7 +299,7 @@ public class App {
 					System.out.println("Digite o novo nome da playlist:");
 					String novoNome = entrada.nextLine();
 					playlist.setNome(novoNome);
-					salvarPlaylistEmArquivo(playlist); // SALVA AUTOMATICAMENTE
+					salvarPlaylistEmArquivo(playlist); 
 					System.out.println("Nome atualizado com sucesso!");
 					break;
 
@@ -325,7 +325,7 @@ public class App {
 							System.out.println("Opção inválida.");
 							break;
 					}
-					salvarPlaylistEmArquivo(playlist); // SALVA AUTOMATICAMENTE
+					salvarPlaylistEmArquivo(playlist); 
 					System.out.println("Playlist ordenada com sucesso!");
 					playlist.exibirPlaylist();
 					break;
@@ -544,14 +544,14 @@ public class App {
 					} else if (linha.startsWith("Artista: ")) {
 						artista = linha.replace("Artista: ", "").trim();
 
-						// Cria a música e adiciona na playlist
+					
 						Artista objArtista = Artista.criarAtista(artista);
 						Musica musica = new Musica(titulo, objArtista, duracao, genero, ano);
 						playlist.addMusica(musica);
 					}
 				}
 
-				// Adiciona a playlist carregada no sistema
+			
 				Playlist.adicionarPlaylist(playlist);
 				System.out.println("\nPlaylists carregadas:  " + playlist.getNome());
 
@@ -564,7 +564,7 @@ public class App {
 	public static void salvarMusicaEmArquivo(Musica musica) {
 		File pasta = new File("musicas");
 		if (!pasta.exists()) {
-			pasta.mkdir(); // cria a pasta se não existir
+			pasta.mkdir(); 
 		}
 
 		File arquivo = new File(pasta, "musicas.txt");
@@ -608,7 +608,7 @@ public class App {
 				} else if (linha.startsWith("Artista: ")) {
 					artista = linha.replace("Artista: ", "").trim();
 
-					// Cria e adiciona a música após coletar todos os dados
+					
 					Artista objArtista = Artista.criarAtista(artista);
 					Musica musica = new Musica(titulo, objArtista, duracao, genero, ano);
 				}

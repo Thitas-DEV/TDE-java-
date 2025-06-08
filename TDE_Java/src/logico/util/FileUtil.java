@@ -1,12 +1,9 @@
 package logico.util;
-import logico.Artista;
-import logico.Musica;   
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import logico.Musica;
 import logico.Playlist;
 
@@ -17,7 +14,7 @@ public class FileUtil {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nomeArquivo))) {
             return (List<Musica>) ois.readObject();
         } catch (FileNotFoundException e) {
-            return new ArrayList<>(); // Nenhum arquivo ainda? Lista vazia.
+            return new ArrayList<>(); 
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Erro ao carregar músicas: " + e.getMessage());
             return new ArrayList<>();
